@@ -33,7 +33,8 @@
   } else if ($uploadOk == 1 || $uploadOk == 2) {
       if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
           echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-          header('Location:builder.php?redirectTo=' . $target_name ."&education=" . $_POST['edu']);
+          header('Location: http://xxx.x.x.x/informed-consent-v2/builder.php?redirectTo=' . $target_name ."&education=" . $_POST['edu']);
+          //header('Location:builder.php?redirectTo=' . $target_name ."&education=" . $_POST['edu']);
       } else {
           echo "Sorry, there was an error uploading your file.";
       }
