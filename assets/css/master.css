@@ -1,0 +1,323 @@
+.file {
+  visibility: hidden;
+  position: absolute;
+}
+
+#show{
+  max-width: 110px;
+}
+
+div{
+  word-wrap: break-word;
+}
+
+.modal-header{
+  background-color: #dbeeff;
+  border-bottom-color: lightblue;
+}
+.modal-footer{
+  background-color: #dbeeff;
+  border-top-color: lightblue;
+}
+
+.progress-bar-title {
+  font-weight: bold;
+  color: black;
+  font-size: 18px;
+  position: absolute;
+  text-align: center;
+  line-height: 30px; /* line-height should be equal to bar height */
+  overflow: hidden;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
+#mySearch{
+  width: 100%;
+  font-family: Arial, FontAwesome;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.inputBox{
+  font-family: Arial, FontAwesome;
+}
+
+.carousel-indic{
+  height: 50px;
+  align: center;
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  padding-bottom: 8%;
+}
+.carousel-indic div{
+  text-align: center;
+  display: inline-block;
+  margin: 0;
+  margin-left: 12px;
+  margin-right: 12px;
+  padding: 0;
+  padding-bottom: 2px;
+  height: 30px;
+  width: 120px;
+  border-bottom: 3px solid lightblue;
+}
+.carousel-indic .active{
+  border-bottom: 3px solid blue;
+}
+
+.popoverMedico{
+  color: #00348e;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.popover-header{
+  background-color: #dbeeff;
+  border-bottom-color: lightblue;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: justify;
+}
+
+.popover-body{
+  font-size: 16px;
+  text-align: left;
+  background-color: #f4f4f4;
+}
+
+.sectionReactionBtn{
+  height: 30px;
+  background: none;
+  padding: 0;
+}
+.sectionBtn:hover{
+  filter: brightness(90%);
+}
+.sectionBtn:active{
+  filter: brightness(50%);
+}
+.sectionBtn:focus {
+  outline: none;
+}
+
+h4{
+  font-size: 97%;
+  font-weight: bold;
+}
+
+p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid white;
+  border-bottom: 1px solid #cccccc
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid lightblue;
+    background-color: aliceblue;
+    background: linear-gradient(aliceblue, #dbeeff, lightblue);
+    color: black;
+    text-align: center;
+}
+
+#nav1 {
+  border-bottom: solid green 1px;
+  padding: 0;
+  padding-top: 10px;
+  background-color: aliceblue;
+  background: radial-gradient(circle, aliceblue, lightblue);
+}
+
+#briefing {
+  border-top: solid 1px #cccccc;
+}
+
+#helpButton{
+  position: fixed;
+  top: 10px;
+  right: 15px;
+}
+
+.container{
+  width: 55%;
+  margin: auto;
+  margin-top: 5%;
+  padding: 5%;
+  text-align: center;
+  align: center;
+  border-radius: 5%;
+  background-color: aliceblue;
+  background: radial-gradient(circle, aliceblue, lightblue);
+}
+
+#logout{
+  width: 120px;
+  position: fixed;
+  top: 2%;
+  right: 2%;
+}
+
+.reactions {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  border-bottom-color: #cccccc;
+}
+
+.readability {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  white-space: nowrap;
+  //display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  border-bottom-color: #cccccc;
+}
+
+.hidden-div{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  border-bottom-color: #cccccc;
+}
+
+.animationload {
+    background-color: #fff;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+}
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+  top:50%;
+  right: 3%;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 27px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ff66ff;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  left: 12px;
+  background: #ff66ff;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  left: 12px;
+  background: #9999ff;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  left: 52px;
+  background: #66ffcc;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  left: 90px;
+  background: #99ff66;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(38px, 0);
+  }
+}
+
+
+.firstHighlight {
+  background-color: #f4a8a8;
+}
+.secondHighlight {
+  background-color: #fff87f;
+}
+
+.bootstrap-switch-id-buttonReadabilityCircles{
+  align: center;
+}
+
+.btn-circle {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.reactionButton{
+  height: 27px;
+  width: 27px;
+}
+
+.reactionButton:hover{
+  filter: brightness(90%);
+}
+
+.reactionButton:active{
+  filter: brightness(50%);
+}
+
+.reactionButton:focus {
+  outline: none;
+}
+
+.btn:focus{
+  outline: none;
+}
+
+.progress{
+  border: 1px solid;
+}
+
+.modal-body p {
+  border: 0px;
+  margin: 0px;
+  padding-top: 14px;
+}
