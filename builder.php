@@ -105,13 +105,13 @@
                   </div>
 
                   <p>Per avere una visualizzazione grafica più efficace della difficoltà nella lettura è possibile attivare lo sfondo. <img src="<?=PREPATH?>assets/img/OnOffSfondo.PNG" height="40px">
-                    <br><span style="font-size: 14px;">(Più lo sfondo sarà tendente al nero più il paragrafo sarà complicato e di difficile comprensione, l'utente sarà invitato ad avvicinarsi allo schermo per capire meglio cosa c'è scritto aumentanto così anche la sua concentrazione.)</span></p>
+                    <br><span style="font-size: 14px;">(Più lo sfondo sarà tendente al nero più il paragrafo sarà complicato e di difficile comprensione, l'utente sarà invitato ad avvicinarsi allo schermo per capire meglio cosa c'è scritto aumentando così anche la sua concentrazione.)</span></p>
                   <p>Cliccando sulle parole in grassetto presenti nel testo del consenso vengono mostrati dei messaggi pop-up che riportano la definizione in Italiano corrente del termine medico a cui si riferiscono grazie all'integrazione di un dizionario <i class="fas fa-book"></i></p>
-                  <p>Il consenso può essere compilato riempiendo gli oppurtuni campi vuoti. (Rappresentati nel testo da <input type="text" disabled style="font-family: Arial, FontAwesome; font-size:12px; padding-left: 5px; height:18px; width:100px;" placeholder="&#xF040; ..."> )</p>
+                  <p>Il consenso può essere compilato riempiendo gli opportuni campi vuoti. (Rappresentati nel testo da <input type="text" disabled style="font-family: Arial, FontAwesome; font-size:12px; padding-left: 5px; height:18px; width:100px;" placeholder="&#xF040; ..."> )</p>
                   <p>Per passare da una sezione all'altra bisogna utilizzare i pulsanti Indietro/Avanti.<span><img src="<?=PREPATH?>assets/img/ButtonSezioni.PNG" height="25px"></span>
                   <br>La barra posta in fondo alla pagina serve per dare un'informazione relativa all'avanzamento della lettura dell'intero documento. <img src="<?=PREPATH?>assets/img/SectionProgress.PNG" height="40px">
                   <br>In ogni istante è possibile capire in quale sezione del Consenso ci si trova. La sezione corrente è indicata in <span style='font-weight: bold; color: blue;'>blu</span>.
-                  Se in una sezione sono state aggiunte una o più reazioni al testo, compararirà il simbolo <i class='fas fa-tasks'></i> sopra il relativo indicatore di sezione: <span><img src="<?=PREPATH?>assets/img/sectionsIndicator.PNG" height="29px"></span></p>
+                  Se in una sezione sono state aggiunte una o più reazioni al testo, comparirà il simbolo <i class='fas fa-tasks'></i> sopra il relativo indicatore di sezione: <span><img src="<?=PREPATH?>assets/img/sectionsIndicator.PNG" height="29px"></span></p>
 
                   <p>Al termine della lettura viene chiesto di rispondere a tre quesiti:</p>
                   <ul class="mb-0 pr-5">
