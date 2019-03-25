@@ -10,6 +10,15 @@
   <script type="text/javascript" src="<?=PREPATH?>assets/parole_DeMauro.json"></script>
 
   <script type="text/javascript" src="<?=PREPATH?>assets/js/converter.js"></script>
+  <script>
+	if (navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {	
+		document.write('<script type="text/javascript" src="<?=PREPATH?>assets\/js\/webgazer\/webgazer.js"><\/script>');
+		document.write('<script type="text/javascript" src="<?=PREPATH?>assets\/js\/main_mobile.js"><\/script>');
+	} 
+	else {
+		document.write('<script type="text/javascript" src="<?=PREPATH?>assets\/js\/main.js"><\/script>');
+	}
+  </script>
   <script type="text/javascript" src="<?=PREPATH?>assets/js/main.js"></script>
   <script type="text/javascript" src="<?=PREPATH?>assets/js/informedConsent.js"></script>
   <script type="text/javascript" src="<?=PREPATH?>assets/js/calculateReadability.js"></script>
@@ -17,39 +26,31 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
   <style type="text/css">
-
   .popover{
     max-width: 350px;
   }
-
   .row{
     width: 100%;
     margin: 0;
   }
-
   .readabilityRadio{
     margin-right: 2px;
   }
-
   #resetReactions{
     white-space: normal;
     margin: 0px !important;
   }
-
   h5{
     font-size: 90%;
     font-weight: bold;
     margin-bottom: 3px;
   }
-
   h4{
     margin-bottom: 3px;
   }
-
   .form-check-label{
     font-size: 80%;
   }
-
   </style>
 
 </head>
@@ -390,13 +391,10 @@
 var text;
 var current_section = 1;
 let test;
-
 var items = [];
-
 $.getJSON( "<?=PREPATH?>assets/parole_DeMauro.json", function( data ) {
   for(i=0; i < data.length; i++)
     wrd_DeMauro[i] = data[i];
-
     $.getJSON( "<?=PREPATH?>assets/dizionario.json", function( data ) {
       var i = 0;
       $.each( data, function( key, val ) {
@@ -405,17 +403,14 @@ $.getJSON( "<?=PREPATH?>assets/parole_DeMauro.json", function( data ) {
         items[i].val = val;
         i++;
       });
-
       buildpage();
       toggleBtVertical();
       resetHeight();
-
       trovaTerminiMedici();
       if (current_section == text.sections.length) {
           $('#final').attr('hidden', false);
           $("#avanti").attr('disabled', true);
       }
-
       //create carousel items
       var s = 0;
       text.sections.forEach(function(section) {
@@ -428,30 +423,24 @@ $.getJSON( "<?=PREPATH?>assets/parole_DeMauro.json", function( data ) {
       "<i class='far fa-question-circle'></i></a></span>");
     });
 });
-
 // problemi nel mettere certi attributi allora setto manualmente
 $("#readability-icon").hide();
 $("#indietro").hide();
 $("#noIndex").focus();
-
 //su dispositivi mobile devo correggere per far comparire keyboard per scrivere nelle input text
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ){
   $('#sectionProgress').css({'margin-bottom': 900});
 }
-
 $("#sfondoTooltip").tooltip('disable');
 $("#letturaTooltip").tooltip('disable');
-
 $(window).resize(function(){
     toggleBtVertical();
     resetHeight();
 });
-
 // ridimensiona in verticale i radioButton degli Indici di Leggibilità
 function toggleBtVertical(){
    if($(window).width() < 1000){
      $("#readabilityBtGroup").addClass("btn-group-vertical");
-
      $('#zoomDiv').css({'padding-top': $('#briefing').height() / 3 - 15});
      $('#sfondoBtn').css({'padding-top': $('#briefing').height() / 3 - 15});
      $('#showIcons').css({'padding-top': $('#briefing').height() / 3 - 15});
@@ -459,22 +448,17 @@ function toggleBtVertical(){
    }
    else{
      $("#readabilityBtGroup").removeClass("btn-group-vertical");
-
      $('#zoomDiv').css({'padding-top': 0});
      $('#sfondoBtn').css({'padding-top': 0});
      $('#showIcons').css({'padding-top': 0});
      $('#briefing_reactions').css({'padding-top': 0});
    }
 }
-
 //responsive per elementi della pagina
 function resetHeight(){
-
   if($('#header').height() < 75)
     $('#header').css({'height': 75});
-
   $('#text-body').css({'margin-top': $('#nav1').height() + 20});
-
   for (var i = 0; i < text.sections.length; i++) {
     var section_id = i + 1;
     $('#empty-title' + section_id).css({
@@ -502,10 +486,8 @@ function resetHeight(){
     $("#pb"+i).css({'margin-top' : ($("#readabilityParagraph"+i).height() / 2 - 10)});
   }
 }
-
 // funzione che trova i termini medici presenti nel CI
 function trovaTerminiMedici(paragraphNumber){
-
   if(paragraphNumber == undefined){
     nTotalParagraphs = 0;
     text.sections.forEach(function(section) {
@@ -515,16 +497,13 @@ function trovaTerminiMedici(paragraphNumber){
       trovaTerminiMedici(n);
     }
   }
-
   // FIXME: RIDIMENSIONA TESTO dovrebbe ingrandire anche i caratteri dei popover
-
     if($('#p'+paragraphNumber).text() != undefined){
       var parole = $('#p'+paragraphNumber).text().replace(/\/|\“|\”|\’|\"|,|\.|:|;|_|\'|\(|\)|\[|\]/g," ");
       parole = parole.split(" ");
     }
     else
       return;
-
       // cerca termini nel dizionario medico
       terminiMedici = [];
       for ( i = 0; i < parole.length; i++) {
@@ -534,12 +513,10 @@ function trovaTerminiMedici(paragraphNumber){
             terminiMedici.push(items[index]);
         }
       }
-
       for (var i = 0; i < terminiMedici.length; i++) {
           $(function () {
             $('[data-toggle="popover"]').popover();
           });
-
           var testoParagrafo = $('#p'+paragraphNumber).html();
           var start = 0, startText = "", termineTrovato = "";
         do{
@@ -547,34 +524,26 @@ function trovaTerminiMedici(paragraphNumber){
           startText = $('#p'+paragraphNumber).html().substring(0, start),
           endText = $('#p'+paragraphNumber).html().substring(start + terminiMedici[i].key.length, $('#p'+paragraphNumber).html().length),
           termineTrovato = $('#p'+paragraphNumber).html().substring(start , start + terminiMedici[i].key.length);
-
           testoParagrafo = endText;
-
         }while(start < start + endText.indexOf("</a>") && (endText.indexOf("<a tab") == -1 || endText.indexOf("<a tab") > endText.indexOf("</a>")));
         //quando termineTrovato non appartiene al testo del paragrafo ma al testo del popover di un termine
-
           var popover = "<a tabindex='0' class='popoverMedico' data-toggle='popover' data-trigger='focus' data-placement='top' title='"+ terminiMedici[i].key +"' data-content=\""+ terminiMedici[i].val.replace(/\"/g,"''") +"\">"+ termineTrovato +"</a>";
           $('#p'+paragraphNumber).html(startText + popover + endText);
       }
 }
-
 //Messaggi di alert mostrati in un modal
 function alertMessage(message){
-
   message = '<div class="row"><div class="col-2 pl-0"><img src="<?=PREPATH?>assets/img/doctor.PNG" height="90px"></div><div class="col-10 pt-4"><span>' + message + '</span></div></div>';
   $('#modalMessage').html(message);
   $('#alertModal').modal('show');
 }
-
 //Al sì della scellta finale prima dell'invio
 function finalSubmit(){
-
   //salvo contenuto input text per metterlo nel report finale
   var input = $('.compile');
   var content = [];
   for(i=0; i<input.length; i++)
     content.push(input[i].value);
-
   var count = 0;
   text.sections.forEach(function(section) {
     section.paragraphs.forEach(function(paragraph) {
@@ -588,12 +557,10 @@ function finalSubmit(){
       }
     });
   });
-
   localStorage.setItem("json", JSON.stringify(text));
   var report = localStorage.getItem('json');
   $.redirect('response.php', {'jsonReport':report});
 }
-
 // hide popover/tooltip aperto quando c'è scroll della pagina
 $(window).scroll(function(){
     $('.popover').popover('hide');
@@ -604,12 +571,10 @@ $('#myModal').scroll(function(){
     $('.popoverIndex').popover('hide');
     document.activeElement.blur();
 });
-
 // tooltip
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
-
 $('.bstooltip').mouseenter(function(){
   var that = $(this)
   that.tooltip('show');
@@ -617,19 +582,15 @@ $('.bstooltip').mouseenter(function(){
     that.tooltip('hide');
   }, 5000);
 });
-
 $('.bstooltip').mouseleave(function(){
   $(this).tooltip('hide');
 });
-
 $('#myModal').appendTo("body")
-
 //mette in pausa video quando si esce dal modal dell'Help
 $('#myModal').on('hidden.bs.modal', function () {
     var myvid = document.getElementById("videoHelp");
     myvid.pause();
 })
-
 </script>
 </body>
 </html>

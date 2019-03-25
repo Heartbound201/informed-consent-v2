@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="informed_consent">
+    <output-path>$PROJECT_DIR$/out/artifacts/informed_consent</output-path>
+    <root id="root" />
+  </artifact>
+</component>
