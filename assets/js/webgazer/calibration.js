@@ -1,38 +1,6 @@
 var PointCalibrate = 0;
 var CalibrationPoints={};
 
-/**
- * Clear the canvas and the calibration button.
- */
-function ClearCanvas(){
-  $(".Calibration").hide();
-  var canvas = document.getElementById("plotting_canvas");
-  canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-}
-
-/**
- * Show the instruction of using calibration at the start up screen.
- */
-function PopUpInstruction(){
-  ClearCanvas();
-  swal({
-    title:"Calibration",
-    text: "Please click on each of the 9 points on the screen. You must click on each point 5 times till it goes yellow. This will calibrate your eye movements.",
-    buttons:{
-      cancel: false,
-      confirm: true
-    }
-  }).then(isConfirm => {
-    ShowCalibrationPoint();
-  });
-
-}
-/**
-  * Show the help instructions right at the start.
-  */
-function helpModalShow() {
-    $('#helpModal').modal('show');
-}
 
 /**
  * Load this function when the index page starts.
@@ -40,8 +8,7 @@ function helpModalShow() {
 * checks that all buttons have been clicked 5 times each, and then goes on to measuring the precision
 */
 $(document).ready(function(){
-  ClearCanvas();
-  helpModalShow();
+    ShowCalibrationPoint();
      $(".Calibration").click(function(){ // click event on the calibration buttons
 
       var id = $(this).attr('id');
@@ -94,7 +61,6 @@ $(document).ready(function(){
                       var past50 = get_points() // retrieve the stored points
                       var precision_measurement = calculatePrecision(past50);
                       var accuracyLabel = "<a>Accuracy | "+precision_measurement+"%</a>";
-                      document.getElementById("Accuracy").innerHTML = accuracyLabel; // Show the accuracy in the nav bar.
                       swal({
                         title: "Your accuracy measure is " + precision_measurement + "%",
                         allowOutsideClick: false,

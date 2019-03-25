@@ -30,28 +30,6 @@ Instructions on use can be found in the README repository.
         <script src="<?=PREPATH?>assets/js/webgazer/precision_calculation.js"></script>
         <script src="<?=PREPATH?>assets/js/webgazer/precision_store_points.js"></script>
 
-        <nav id="webgazerNavbar" class="navbar navbar-default navbar-fixed-top">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <!-- The hamburger menu button -->
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav">
-                <!-- Accuracy -->
-                <li id="Accuracy"><a>Not yet Calibrated</a></li>
-                <li onclick="Restart()"><a href="#">Recalibrate</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li><button class="helpBtn" data-toggle="modal" data-target="#helpModal"><a data-toggle="modal"><span class="glyphicon glyphicon-cog"></span> Help</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
         <!-- Calibration points -->
         <div class="calibrationDiv">
             <input type="button" class="Calibration" id="Pt1"></input>
