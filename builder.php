@@ -13,10 +13,7 @@
   <script>
 	if (navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {	
 		document.write('<script type="text/javascript" src="<?=PREPATH?>assets\/js\/webgazer\/webgazer.js"><\/script>');
-		document.write('<script type="text/javascript" src="<?=PREPATH?>assets\/js\/main_mobile.js"><\/script>');
-	} 
-	else {
-		document.write('<script type="text/javascript" src="<?=PREPATH?>assets\/js\/main.js"><\/script>');
+		document.write('<script type="text/javascript" src="<?=PREPATH?>assets\/js\/mobilebridge.js"><\/script>');
 	}
   </script>
   <script type="text/javascript" src="<?=PREPATH?>assets/js/main.js"></script>
