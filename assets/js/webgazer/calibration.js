@@ -90,6 +90,7 @@ $(document).ready(function(){
  * Show the Calibration Points
  */
 function ShowCalibrationPoint() {
+  window.localStorage.clear();
   $(".Calibration").show();
   $("#Pt5").hide(); // initially hides the middle button
 }

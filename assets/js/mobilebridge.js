@@ -33,6 +33,7 @@ function calculateAndDisplayForAllParagraphs() {
         paragraph['text'] = par.text();
         paragraph['visibility'] = calculateVisibilityForParagraph(par);
         paragraph['boundingbox'] = par[0].getBoundingClientRect();
+		paragraph['numwords'] = par[0].innerHTML.split(' ').length;
         paragraphs.push(paragraph);
     });
     return paragraphs;
@@ -96,7 +97,7 @@ window.onload = function() {
           //   console.log(clock); /* elapsed time in milliseconds since webgazer.begin() was called */
         })
         .begin()
-        .showPredictionPoints(true) /* shows a square every 100 milliseconds where current prediction is */
+        .showPredictionPoints(false) /* shows a square every 100 milliseconds where current prediction is */
 		.showFaceOverlay(false)
         .showVideo(false)
         .showFaceFeedbackBox(false);
@@ -108,8 +109,8 @@ window.onload = function() {
 };
 
 window.onbeforeunload = function() {
-    webgazer.end(); //Uncomment if you want to save the data even if you reload the page.
-    //window.localStorage.clear(); //Comment out if you want to save data across different sessions
+    //webgazer.end(); //Uncomment if you want to save the data even if you reload the page.
+    window.localStorage.clear(); //Comment out if you want to save data across different sessions
 	AndroidBridge.stopStreaming();	
 	AndroidBridge.updateWebSession(new Date().getTime());
 }

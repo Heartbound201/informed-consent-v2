@@ -8,7 +8,9 @@ window.onload = function() {
           //   console.log(clock); /* elapsed time in milliseconds since webgazer.begin() was called */
         })
         .begin()
-        .showPredictionPoints(true); /* shows a square every 100 milliseconds where current prediction is */
+        .showPredictionPoints(true) /* shows a square every 100 milliseconds where current prediction is */
+		.showFaceOverlay(false)
+        .showFaceFeedbackBox(false);
 
 
     //Set up the webgazer video feedback.
