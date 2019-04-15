@@ -10,12 +10,6 @@
   <script type="text/javascript" src="<?=PREPATH?>assets/parole_DeMauro.json"></script>
 
   <script type="text/javascript" src="<?=PREPATH?>assets/js/converter.js"></script>
-  <script>
-	if (navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {	
-		document.write('<script type="text/javascript" src="<?=PREPATH?>assets\/js\/webgazer\/webgazer.js"><\/script>');
-		document.write('<script type="text/javascript" src="<?=PREPATH?>assets\/js\/mobilebridge.js"><\/script>');
-	}
-  </script>
   <script type="text/javascript" src="<?=PREPATH?>assets/js/main.js"></script>
   <script type="text/javascript" src="<?=PREPATH?>assets/js/informedConsent.js"></script>
   <script type="text/javascript" src="<?=PREPATH?>assets/js/calculateReadability.js"></script>
@@ -23,6 +17,12 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
   <style type="text/css">
+  body{
+	  font-size: 0.7rem;
+  }
+  .btn{
+	  font-size: 0.7rem;
+  }
   .popover{
     max-width: 350px;
   }
@@ -53,7 +53,13 @@
 </head>
 
 <body>
-
+	
+  <script>
+	if (navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i)) {	
+		document.write('<script type="text/javascript" src="<?=PREPATH?>assets\/js\/webgazer\/webgazer.js"><\/script>');
+		document.write('<script type="text/javascript" src="<?=PREPATH?>assets\/js\/mobilebridge.js"><\/script>');
+	}
+  </script>
   <div class="container-fluid m-0 p-0" id="top">
 
     <nav class="navbar fixed-top" id="nav1">
@@ -436,7 +442,7 @@ $(window).resize(function(){
 });
 // ridimensiona in verticale i radioButton degli Indici di Leggibilità
 function toggleBtVertical(){
-   if($(window).width() < 1000){
+   if($(window).width() < 800){
      $("#readabilityBtGroup").addClass("btn-group-vertical");
      $('#zoomDiv').css({'padding-top': $('#briefing').height() / 3 - 15});
      $('#sfondoBtn').css({'padding-top': $('#briefing').height() / 3 - 15});

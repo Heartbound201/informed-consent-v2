@@ -17,11 +17,11 @@ Instructions on use can be found in the README repository.
 		require_once(PREPATH."page_builder/_header.php") ?>
         <link rel="stylesheet" type="text/css" href="<?=PREPATH?>assets/css/webgazer/style.css">
         <link rel="stylesheet" href="<?=PREPATH?>assets/css/webgazer/bootstrap.css">
-        <script async type="text/javascript" src="<?=PREPATH?>assets/js/webgazer/webgazer.js"></script>
     </head>
     <body LANG="en-US" LINK="#0000ff" DIR="LTR">
       <canvas id="plotting_canvas" width="500" height="500" style="cursor:crosshair;"></canvas>
 
+        <script async type="text/javascript" src="<?=PREPATH?>assets/js/webgazer/webgazer.js"></script>
 		<script type="text/javascript" src="<?=PREPATH?>assets/plugin/jquery.redirect.js"></script>
         <script src="<?=PREPATH?>assets/js/webgazer/sweetalert.min.js"></script>
 

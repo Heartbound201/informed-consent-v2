@@ -95,8 +95,8 @@ function ShowCalibrationPoint() {
 }
 
 /**
-* This function clears the calibration buttons memory
-*/
+ * This function clears the calibration buttons memory
+ */
 function ClearCalibration(){
   window.localStorage.clear();
   $(".Calibration").css('background-color','red');
@@ -106,6 +106,21 @@ function ClearCalibration(){
   CalibrationPoints = {};
   PointCalibrate = 0;
 }
+
+
+/*
+ * This function starts the streaming of data between the android device and the Shimmer3 GSR+ device
+ * This is done in order to analyze a baseline
+ */
+ /*
+function StartStreaming(){	
+	AndroidBridge.startStreamingBaseline();
+}
+
+window.onbeforeunload = function(){
+	AndroidBridge.stopStreamingBaseline();
+}
+*/
 
 // sleep function because java doesn't have one, sourced from http://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
 function sleep (time) {
