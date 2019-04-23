@@ -8,6 +8,7 @@ var CalibrationPoints={};
 * checks that all buttons have been clicked 5 times each, and then goes on to measuring the precision
 */
 $(document).ready(function(){
+	StartStreaming()
     ShowCalibrationPoint();
      $(".Calibration").click(function(){ // click event on the calibration buttons
 
@@ -113,7 +114,7 @@ function ClearCalibration(){
  * This function starts the streaming of data between the android device and the Shimmer3 GSR+ device
  * This is done in order to analyze a baseline
  */
- /*
+ 
 function StartStreaming(){	
 	AndroidBridge.startStreamingBaseline();
 }
@@ -121,7 +122,7 @@ function StartStreaming(){
 window.onbeforeunload = function(){
 	AndroidBridge.stopStreamingBaseline();
 }
-*/
+
 
 // sleep function because java doesn't have one, sourced from http://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
 function sleep (time) {

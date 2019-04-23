@@ -33,8 +33,9 @@ window.onload = function() {
     setTimeout(checkIfReady,100);
 };
 
-window.onbeforeunload = function() {
+window.onunload = window.onbeforeunload = function() {
     webgazer.end(); //Uncomment if you want to save the data even if you reload the page.
     //window.localStorage.clear(); //Comment out if you want to save data across different sessions
+	return null;
 }
 

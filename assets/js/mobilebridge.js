@@ -26,7 +26,7 @@ function calculateVisibilityForParagraph(par) {
 
 function calculateAndDisplayForAllParagraphs() {
     var paragraphs = [];
-    $('p.testo').each(function () {
+    $('p.testo:visible').each(function () {
         var par = $(this);
         var paragraph = {};
         paragraph['id'] = par.attr('id');
@@ -40,16 +40,22 @@ function calculateAndDisplayForAllParagraphs() {
 }
 
 function predictCurrentParagraph(gaze_position){	
+	if(Object.keys(gaze_position).length === 0) return;
     var predicted_paragraph = {};
     calculateAndDisplayForAllParagraphs().forEach(function (item) {
-        if( gaze_position != null && gaze_position.y >= item.boundingbox.y && gaze_position.y <= item.boundingbox.y + item.boundingbox.height )
+        if( item.visibility > 0 && gaze_position.y >= item.boundingbox.y && gaze_position.y <= item.boundingbox.y + item.boundingbox.height )
         {
             predicted_paragraph = item;
         }
     });
-	if(predicted_paragraph){
-		predicted_paragraph['heatmap_position'] = {x: gaze_position.x, y: predicted_paragraph.boundingbox.y + gaze_position.y, scroll: window.scrollY };
+	
+	if(Object.keys(gaze_position).length > 0){
+		predicted_paragraph['heatmap_position'] = {
+			x: gaze_position.x - predicted_paragraph.boundingbox.left, 
+			y: gaze_position.y - predicted_paragraph.boundingbox.top
+		};
     }
+	
 	return predicted_paragraph;
 }
 
@@ -61,8 +67,10 @@ function trackSession(){
 function androidNativeInterfaceCall() {
 	var gaze = getEyePrediction();
 	var paragraph = predictCurrentParagraph(gaze);
-   //AndroidBridge.trackJavascriptData(new Date().getTime(), JSON.stringify(calculateAndDisplayForAllParagraphs()), JSON.stringify(getEyePrediction()));
-   AndroidBridge.trackJavascriptData(new Date().getTime(), JSON.stringify(paragraph), JSON.stringify(gaze));
+	
+	console.log(gaze);
+	console.log(paragraph);
+    AndroidBridge.trackJavascriptData(new Date().getTime(), JSON.stringify(paragraph), JSON.stringify(gaze));
 }
 
 
@@ -108,11 +116,13 @@ window.onload = function() {
 	setInterval(androidNativeInterfaceCall, 500);
 };
 
-window.onbeforeunload = function() {
+window.onunload = window.onbeforeunload = function() {
     //webgazer.end(); //Uncomment if you want to save the data even if you reload the page.
-    window.localStorage.clear(); //Comment out if you want to save data across different sessions
+    //window.localStorage.clear(); //Comment out if you want to save data across different sessions
 	AndroidBridge.stopStreaming();	
 	AndroidBridge.updateWebSession(new Date().getTime());
+	AndroidBridge.calculateTimeSpentOnParagraphs();
+	return null;
 }
 
 /**
