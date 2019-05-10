@@ -73,6 +73,7 @@ $(document).ready(function(){
                           if (isConfirm){
                             //clear the calibration & hide the last middle button
                             ClearCanvas();
+							webgazer.end();
                           } else {
                             //use restart function to restart the calibration
                             ClearCalibration();
@@ -119,8 +120,12 @@ function StartStreaming(){
 	AndroidBridge.startStreamingBaseline();
 }
 
-window.onbeforeunload = function(){
+function StopStreaming(){
 	AndroidBridge.stopStreamingBaseline();
+}
+
+window.onbeforeunload = function(){
+	StopStreaming();
 }
 
 
