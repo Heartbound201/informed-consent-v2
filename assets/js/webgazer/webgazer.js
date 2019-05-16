@@ -10815,6 +10815,7 @@ function store_points(x, y, k) {
         recordScreenPosition(event.clientX, event.clientY, eventTypes[1]); //eventType[1] === 'move'
     };
 	
+	//Cla
 	var touchListener = function(event){
 		if (paused) {
             return;
@@ -10837,7 +10838,7 @@ function store_points(x, y, k) {
         //this prevents a client using event.stopPropagation() preventing our access to the click
         document.addEventListener('click', clickListener, true);
         document.addEventListener('mousemove', moveListener, true);
-		document.addEventListener('touchmove', touchListener, true); //Cla
+		//document.addEventListener('touchmove', touchListener, true); //Cla
     };
 
     /**
@@ -10848,7 +10849,7 @@ function store_points(x, y, k) {
         // for this to work.
         document.removeEventListener('click', clickListener, true);
         document.removeEventListener('mousemove', moveListener, true);
-		document.removeEventListener('touchmove', touchListener, true); //Cla
+		//document.removeEventListener('touchmove', touchListener, true); //Cla
     };
 
     /**

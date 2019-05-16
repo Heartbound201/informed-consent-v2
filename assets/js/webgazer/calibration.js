@@ -9,6 +9,7 @@ var CalibrationPoints={};
 */
 $(document).ready(function(){
 	StartStreaming()
+	ClearCalibration();
     ShowCalibrationPoint();
      $(".Calibration").click(function(){ // click event on the calibration buttons
 
@@ -74,6 +75,7 @@ $(document).ready(function(){
                             //clear the calibration & hide the last middle button
                             ClearCanvas();
 							webgazer.end();
+							StopStreaming();
                           } else {
                             //use restart function to restart the calibration
                             ClearCalibration();
@@ -92,7 +94,6 @@ $(document).ready(function(){
  * Show the Calibration Points
  */
 function ShowCalibrationPoint() {
-  window.localStorage.clear();
   $(".Calibration").show();
   $("#Pt5").hide(); // initially hides the middle button
 }
@@ -110,6 +111,14 @@ function ClearCalibration(){
   PointCalibrate = 0;
 }
 
+/**
+ * Clear the canvas and the calibration button.
+ */
+function ClearCanvas(){
+  $(".Calibration").hide();
+  var canvas = document.getElementById("plotting_canvas");
+  canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+}
 
 /*
  * This function starts the streaming of data between the android device and the Shimmer3 GSR+ device

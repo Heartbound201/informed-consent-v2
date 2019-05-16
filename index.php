@@ -88,7 +88,7 @@
        Logout <i class="fas fa-sign-out-alt"></i>
     </a>
 
-    <!-- Modal per selezionare livello istruzione-->
+    <!-- Modal per selezionare livello istruzione, età e sesso-->
     <div class="modal fade" id="education" role="dialog">
       <div class="modal-dialog" style="max-width: 600px;">
         <div class="modal-content">
@@ -118,6 +118,32 @@
                   Laurea
                 </label>
               </div>
+			  
+			  <h4 align="center">- Età -</h4>
+              <hr>
+              <span style="font-weight: 600;">Qual è l'età di chi legge e compila il Consenso Informato? <span style="color: red;">*</span></span>
+              <div class="form-check mt-2">
+				<select id="age" name="age"></select> 
+                <label class="form-check-label" for="scuola">
+                  Età
+                </label>
+              </div>
+			  
+			  <h4 align="center">- Sesso -</h4>
+              <hr>
+              <span style="font-weight: 600;">Qual è il sesso di chi legge e compila il Consenso Informato? <span style="color: red;">*</span></span>
+              <div class="form-check mt-2">
+                <input class="form-check-input" type="radio" id="male" name="gender" value="M">
+                <label class="form-check-label" for="scuola">
+                  Maschio
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="female" name="gender" value="F">
+                <label class="form-check-label" for="diploma">
+                  Femmina
+                </label>
+              </div>
           </div>
           <div class="modal-footer">
             <!-- spiegazione indice Costa-Cabitza-->
@@ -143,6 +169,17 @@
 
       $('[data-toggle="popover"]').popover();
       $('#notFound').hide();
+
+	  window.onload = function() {
+		// fill the 'age' dropdown list
+		var select = $("#age")[0];    
+		for (var i = 16; i<= 90; i++){
+			var option = document.createElement('option');
+			option.value = i;
+			option.innerHTML = i;
+			select.options.add(option);
+		}
+	  };
 
       $(document).on('click', '.browse', function(){
         var file = $(this).parent().parent().parent().find('.file');
@@ -176,7 +213,11 @@
       var fUrl = "";
       var upload;
       var education;
+	  var age;
+	  var gender;
+	  
       //Modal per sapere il livello di istruzione
+	  // NOTE: the modal shown now asks for age and sex too
       function patientEducation(file, bool){
           fUrl = file;
           $('.modal-title').html("Apertura Consenso Informato: <i>" + file + "</i>");
@@ -184,18 +225,21 @@
           upload = bool;
       }
 
+	  // NOTE: this function now checks for age and sex selection also
       function checkEducationSelection(){
         education = $('input[name=education]:checked').val();
-        if(education == undefined){
+		age = $("#age")[0].value;
+		gender = $('input[name=gender]:checked').val();
+        if(education == undefined || gender == undefined || age == undefined){
           $('#errorMessage').html(
-            '<div class=" text-center col-auto alert alert-danger alert-dismissible fade show mt-3" role="alert"><strong align="center"><i class="fas fa-exclamation-triangle"></i>&emsp;Attenzione!&emsp;</strong>E\' obbligatorio selezionare una tra le tre opzioni proposte. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'
+            '<div class=" text-center col-auto alert alert-danger alert-dismissible fade show mt-3" role="alert"><strong align="center"><i class="fas fa-exclamation-triangle"></i>&emsp;Attenzione!&emsp;</strong>E\' obbligatorio compilare tutti i campi. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'
           );
         }
         else {
           $('#education').modal('hide');
           $('#edu').val(education);
           if(!upload)
-            window.location.href = "<?=PREPATH?>builder.php?redirectTo=" + fUrl +"&education=" + education;
+            window.location.href = "<?=PREPATH?>builder.php?redirectTo=" + fUrl +"&education=" + education+"&age=" + age +"&gender=" + gender;
         }
       }
 

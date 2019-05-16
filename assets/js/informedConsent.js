@@ -9,7 +9,11 @@ class InformedConsent {
     this.fearful;
     this.confused;
     this.education;
+	this.age;
+	this.gender;
     this.setEducation();
+	this.setAge();
+	this.setGender();
     this.createParagraphs(paragraphs);
     this.readabilityScore();
     console.log(this);
@@ -24,6 +28,16 @@ class InformedConsent {
       this.education = "Diploma";
     if(num == 1)
       this.education = "Laurea";
+  }
+  
+  // funzione che setta il valore di age
+  setAge(){
+    this.age = new URL(window.location.href).searchParams.get("age");
+  }
+  
+  // funzione che setta il valore di gender
+  setGender(){
+    this.gender = new URL(window.location.href).searchParams.get("gender");
   }
 
   // funzione che crea le sezioni ed i paragrafi
@@ -138,6 +152,16 @@ class InformedConsent {
       $(".section[id=\"" + id + "-text\"]").append(text);
     }
     paragraphs.forEach(function(paragraph) {
+		
+	  // parse questions
+	  if(paragraph.text.charAt(0) == '?'){
+		var pSplit = paragraph.text.split("|");
+		for(var i = 1; i < pSplit.length; i++){
+			paragraph.text = paragraph.text.replace("|" + pSplit[i], ' <div class="form-check form-check-inline"><input type="radio" class="form-check-input" name="question' + paragraph.id + '" value="' + pSplit[i] + '">' + pSplit[i] + '</input></div>');
+		}
+		paragraph.text = paragraph.text.replace(pSplit[0], pSplit[0].substr(1) + '<br><div class="input-group" style="display: block">');
+		paragraph.text += "</div>";
+	  }
 
       if(paragraph.text.includes("___")){
         //replace for input text

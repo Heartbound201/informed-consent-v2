@@ -120,7 +120,7 @@ window.onunload = window.onbeforeunload = function() {
     //webgazer.end(); //Uncomment if you want to save the data even if you reload the page.
     //window.localStorage.clear(); //Comment out if you want to save data across different sessions
 	AndroidBridge.stopStreaming();	
-	AndroidBridge.updateWebSession(new Date().getTime());
+	AndroidBridge.updateWebSession(new Date().getTime(), JSON.stringify(window.localStorage.getItem("json")));
 	AndroidBridge.calculateTimeSpentOnParagraphs();
 	return null;
 }

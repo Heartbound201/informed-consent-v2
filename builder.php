@@ -540,7 +540,7 @@ function alertMessage(message){
   $('#modalMessage').html(message);
   $('#alertModal').modal('show');
 }
-//Al sì della scellta finale prima dell'invio
+//Al sì della scelta finale prima dell'invio
 function finalSubmit(){
   //salvo contenuto input text per metterlo nel report finale
   var input = $('.compile');
@@ -554,12 +554,15 @@ function finalSubmit(){
         var index = paragraph.text.indexOf('<input type="');
         if(index == paragraph.text.indexOf('<input type="date"'))
           paragraph.text = paragraph.text.replace(/<input type="date" class="compile" value="[0-9|\-]*">/, '__' + content[count] + '__');
-        else
+        else if(index == paragraph.text.indexOf('<input type="text"'))
           paragraph.text = paragraph.text.replace('<input type="text" class="compile" style="font-family: Arial, FontAwesome; padding-left: 5px;" placeholder="&#xF040; ...">', '__' + content[count] + '__');
+		else if(index == paragraph.text.indexOf('<input type="radio"'))
+		  paragraph.text = paragraph.text.substr(0, index-95) + " " + $("input[name='question" + paragraph.id + "']:checked").val();
         count++;
       }
     });
   });
+  console.log(text);
   localStorage.setItem("json", JSON.stringify(text));
   var report = localStorage.getItem('json');
   $.redirect('response.php', {'jsonReport':report});
