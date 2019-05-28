@@ -126,7 +126,7 @@ function ClearCanvas(){
  */
  
 function StartStreaming(){	
-	AndroidBridge.startStreamingBaseline();
+	AndroidBridge.startStreamingBaseline(1);
 }
 
 function StopStreaming(){

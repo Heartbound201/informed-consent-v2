@@ -124,7 +124,7 @@
               <span style="font-weight: 600;">Qual è l'età di chi legge e compila il Consenso Informato? <span style="color: red;">*</span></span>
               <div class="form-check mt-2">
 				<select id="age" name="age"></select> 
-                <label class="form-check-label" for="scuola">
+                <label class="form-check-label" for="age">
                   Età
                 </label>
               </div>
@@ -134,13 +134,13 @@
               <span style="font-weight: 600;">Qual è il sesso di chi legge e compila il Consenso Informato? <span style="color: red;">*</span></span>
               <div class="form-check mt-2">
                 <input class="form-check-input" type="radio" id="male" name="gender" value="M">
-                <label class="form-check-label" for="scuola">
+                <label class="form-check-label" for="male">
                   Maschio
                 </label>
               </div>
               <div class="form-check">
                 <input class="form-check-input" type="radio" id="female" name="gender" value="F">
-                <label class="form-check-label" for="diploma">
+                <label class="form-check-label" for="female">
                   Femmina
                 </label>
               </div>

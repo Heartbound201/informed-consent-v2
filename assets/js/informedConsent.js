@@ -157,9 +157,9 @@ class InformedConsent {
 	  if(paragraph.text.charAt(0) == '?'){
 		var pSplit = paragraph.text.split("|");
 		for(var i = 1; i < pSplit.length; i++){
-			paragraph.text = paragraph.text.replace("|" + pSplit[i], ' <div class="form-check form-check-inline"><input type="radio" class="form-check-input" name="question' + paragraph.id + '" value="' + pSplit[i] + '">' + pSplit[i] + '</input></div>');
+			paragraph.text = paragraph.text.replace("|" + pSplit[i], ' <input type="radio" class="form-check-input" name="question' + paragraph.id + '" value="' + pSplit[i] + '">' + pSplit[i] + '</input>');
 		}
-		paragraph.text = paragraph.text.replace(pSplit[0], pSplit[0].substr(1) + '<br><div class="input-group" style="display: block">');
+		paragraph.text = paragraph.text.replace(pSplit[0], pSplit[0].substr(1) + '<br><div class="input-group form-check form-check-inline" style="display: block">');
 		paragraph.text += "</div>";
 	  }
 
