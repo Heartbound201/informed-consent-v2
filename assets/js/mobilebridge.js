@@ -60,7 +60,7 @@ function predictCurrentParagraph(gaze_position){
 }
 
 function trackSession(){
-    AndroidBridge.trackWebSession(new Date().getTime(), window.location.href)
+    AndroidBridge.trackWebSession(new Date().getTime(), window.location.href, "READING");
 	AndroidBridge.startStreaming();
 }
 

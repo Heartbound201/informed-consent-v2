@@ -8,6 +8,7 @@ var CalibrationPoints={};
 * checks that all buttons have been clicked 5 times each, and then goes on to measuring the precision
 */
 $(document).ready(function(){
+	TrackSession();
 	StartStreaming()
 	ClearCalibration();
     ShowCalibrationPoint();
@@ -135,8 +136,12 @@ function StopStreaming(){
 
 window.onbeforeunload = function(){
 	StopStreaming();
+	AndroidBridge.updateWebSession(new Date().getTime(), JSON.stringify({}));
 }
 
+function TrackSession(){
+    AndroidBridge.trackWebSession(new Date().getTime(), window.location.href, "CALIBRATION");
+}
 
 // sleep function because java doesn't have one, sourced from http://stackoverflow.com/questions/951021/what-is-the-javascript-version-of-sleep
 function sleep (time) {

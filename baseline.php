@@ -57,14 +57,19 @@
 		}
 
 		window.onload = function() {
+			TrackSession();
 			StartStreaming();
 			move();
 		}
 		
 		window.onbeforeunload = function(){
 			StopStreaming();
+			AndroidBridge.updateWebSession(new Date().getTime(), JSON.stringify({}));
 		}
 		
+		function TrackSession(){
+			AndroidBridge.trackWebSession(new Date().getTime(), window.location.href, "BASELINE");
+		}
 
 		</script>
     </head>
